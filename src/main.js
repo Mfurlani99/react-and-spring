@@ -1,12 +1,23 @@
+import { invoiceById } from "./data/invoices";
+
+const findInvoicesByid =(id) => {
+const promise = new Promise((resolve, reject) => {
+    
+  setTimeout (()=>{
+    const result = invoiceById(id);
+
+    if(result){
+        resolve(result);
+    }else{
+        reject("no se puede enecontrar la factura o es inexistente");
+    }
 
 
-const suma1 = (g = 0, d = 0) => g + d;
+  },2500)
 
-const resultado1 = suma1(2, 3);
+});
 
-const suma2 = (f = 3, j = 45) => f - j;
-const resultado2 = suma2(4, 8);
+return promise;
+}
 
-const ejecutar = (fn) => fn(resultado1, resultado2);
-
-ejecutar((a = 0, b = 0) => console.log(a + b));
+findInvoicesByid(3).then(console.log).catch(console.error);
